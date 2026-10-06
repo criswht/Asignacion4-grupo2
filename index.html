@@ -1,55 +1,738 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-	<title>VUELOSHARSH</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <body>
-        <header>
-            <nav>
-                <a href="nosotros.html">Nosotros</a>
-            </nav>
-            <h1>VUELOS HARSH</h1>
-            <h2>Descubre el mundo desde aquí</h2>
-            <article>
-                <p>Somos una agencia de viajes virtual que te muestra
-                    los mejores sitios turísticos con información útil 
-                    para tu primer viaje.
-                </p>
-            </article>
-        </header>
+    <title>Laboratorio de CSS</title>
 
-        <br>
-        <HR>
-        
-        <section class="imagen">
-            <img src="https://img.magnific.com/foto-gratis/lugar-volando-cielo-al-atardecer_1112-1132.jpg?semt=ais_hybrid&w=740&q=80" widt="360" height="420" alt="avion">
-        </section>
-      
-        <section class="destinos">
-        <h1>Nuestros Destinos</h1>
-            <div>
-                <h2>Machu Picchu</h2>
-                <a href="machu_picchu.html">Ver sitio</a>
+    <style>
+        /* =====================================================
+           ESTILOS GENERALES
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f7;
+            color: #222;
+            line-height: 1.5;
+        }
+
+        header {
+            background-color: #263238;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+        }
+
+        header p {
+            margin: 0;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        /* Cada sección de la demostración */
+        .seccion {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .seccion h2 {
+            margin-top: 0;
+            color: #263238;
+        }
+
+        .descripcion {
+            color: #555;
+        }
+
+
+        /* =====================================================
+           1. BOX MODEL
+           ===================================================== */
+
+        .box-model-area {
+            background-color: #eeeeee;
+            padding: 35px;
+            border: 2px dashed #999;
+        }
+
+        /*
+            Esta caja demuestra:
+
+            margin  -> espacio exterior
+            border  -> borde
+            padding -> espacio interior
+            content -> contenido
+        */
+
+        .caja-modelo {
+            width: 250px;
+            margin: 30px auto;
+            padding: 30px;
+            border: 8px solid #1976d2;
+
+            background-color: #90caf9;
+
+            text-align: center;
+        }
+
+        .caja-modelo strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .codigo-ejemplo {
+            background-color: #263238;
+            color: #eeeeee;
+            padding: 15px;
+            border-radius: 6px;
+
+            width: 100%;
+            height: 120px;
+
+            overflow: auto;
+
+            font-family: monospace;
+        }
+                
+
+
+        /* =====================================================
+           2. BLOCK E INLINE
+           ===================================================== */
+
+        .block {
+            display: block;
+            background-color: #ffcc80;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #ef6c00;
+        }
+
+        .inline {
+            display: inline;
+            background-color: #b39ddb;
+            border: 2px solid #673ab7;
+            padding: 5px;
+        }
+
+        .ejemplo-inline {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+        }
+
+        /* =====================================================
+        2.5. FLOTACIÓN: FLOAT Y CLEAR
+        ===================================================== */
+
+        /*
+            float permite que un elemento se coloque
+            hacia la izquierda o derecha.
+
+            El contenido que viene después puede rodearlo.
+        */
+
+        .contenedor-float {
+            border: 2px solid #ccc;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        /* Elemento que vamos a hacer flotar */
+        .caja-float {
+            float: left;
+
+            width: 150px;
+            height: 100px;
+
+            margin: 0 20px 10px 0;
+
+            background-color: #ffcc80;
+            border: 3px solid #ef6c00;
+
+            text-align: center;
+            padding-top: 35px;
+            font-weight: bold;
+        }
+
+        /*
+            clear evita que un elemento se coloque
+            junto a un elemento que está flotando.
+        */
+
+        .clear {
+            clear: both;
+            margin-top: 20px;
+            padding: 15px;
+
+            background-color: #e8f5e9;
+            border: 2px solid #43a047;
+        }
+
+        /* =====================================================
+           3. POSITION: RELATIVE Y ABSOLUTE
+           ===================================================== */
+
+        /*
+            relative:
+            El elemento conserva su espacio original,
+            pero podemos moverlo usando top, left, etc.
+        */
+
+        .contenedor-relative {
+            position: relative;
+
+            height: 250px;
+            background-color: #e3f2fd;
+            border: 3px solid #1976d2;
+
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .elemento-relative {
+            position: relative;
+
+            top: 20px;
+            left: 20px;
+
+            width: 180px;
+            padding: 15px;
+
+            background-color: #81d4fa;
+            border: 2px solid #0288d1;
+
+            text-align: center;
+        }
+
+        /*
+            absolute:
+            El elemento se posiciona respecto al ancestro
+            que tenga position: relative.
+        */
+
+        .elemento-absolute {
+            position: absolute;
+
+            top: 20px;
+            right: 20px;
+
+            width: 180px;
+            padding: 15px;
+
+            background-color: #ffab91;
+            border: 2px solid #e64a19;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           4. POSITION: FIXED
+           ===================================================== */
+
+        /*
+            fixed:
+            El elemento queda fijo respecto a la ventana.
+            Aunque hagamos scroll, permanece en el mismo lugar.
+        */
+
+        .elemento-fixed {
+            position: fixed;
+
+            bottom: 20px;
+            right: 20px;
+
+            background-color: #43a047;
+            color: white;
+
+            padding: 15px 20px;
+
+            border: 3px solid #1b5e20;
+            border-radius: 8px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           COMPARACIÓN
+           ===================================================== */
+
+        .comparacion {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tarjeta {
+            flex: 1;
+            min-width: 200px;
+
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+
+            background-color: #fafafa;
+        }
+
+        .tarjeta h3 {
+            margin-top: 0;
+        }
+
+
+        /* =====================================================
+           PIE DE PÁGINA
+           ===================================================== */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         ENCABEZADO
+         ===================================================== -->
+
+    <header>
+        <h1>Laboratorio de CSS</h1>
+        <p>Box Model, Display y Posicionamiento</p>
+    </header>
+
+
+    <main>
+
+        <!-- =================================================
+             1. BOX MODEL
+             ================================================= -->
+
+        <section class="seccion">
+
+            <h2>1. Box Model</h2>
+
+            <p class="descripcion">
+                Todo elemento HTML puede entenderse como una caja.
+                El Box Model está formado por contenido, padding,
+                border y margin.
+            </p>
+
+            <div class="box-model-area">
+
+                <div class="caja-modelo">
+
+                    <strong>Contenido</strong>
+
+                    width: 250px
+
+                    <br><br>
+
+                    padding: 30px
+                    <br>
+                    border: 8px
+
+                </div>
+
             </div>
+
+
+            <h3>Partes del Box Model</h3>
+
+            <ul>
+                <li><strong>Content:</strong> contenido del elemento.</li>
+                <li><strong>Padding:</strong> espacio entre el contenido y el borde.</li>
+                <li><strong>Border:</strong> borde de la caja.</li>
+                <li><strong>Margin:</strong> espacio exterior de la caja.</li>
+            </ul>
+
+
+            <h3>box-sizing</h3>
+
+            <p>
+                En esta página utilizamos
+                <strong>box-sizing: border-box</strong>.
+                Esto hace que el ancho y alto definidos incluyan
+                el padding y el border.
+            </p>
+
             
-            <div>
-                <h2>Gujarat</h2>
-                <a href="gujarat.html">Ver sitio</a>
+            <div class="codigo-ejemplo">
+
+                .caja-modelo {
+                <br>
+                &nbsp;&nbsp;width: 250px;
+                <br>
+                &nbsp;&nbsp;padding: 30px;
+                <br>
+                &nbsp;&nbsp;border: 8px solid blue;
+                <br>
+                &nbsp;&nbsp;box-sizing: border-box;
+                <br>
+                }
+
+                <br><br>
+
+                /* Este texto es solamente para demostrar overflow. */
+                <br>
+                /* Como el contenido es más grande que la altura de la caja, */
+                <br>
+                /* el navegador debe decidir qué hacer con el contenido que sobra. */
+                <br>
+                /* Podemos cambiar la propiedad overflow para observar */
+                <br>
+                /* diferentes comportamientos dentro de esta misma caja. */
+
             </div>
-           
-            <div>
-                <h2>Paris</h2>
-                <a href="paris.html">Ver sitio</a>
+
+        </section>
+
+
+        <!-- =================================================
+             2. BLOCK E INLINE
+             ================================================= -->
+
+        <section class="seccion">
+
+            <h2>2. Elementos Block e Inline</h2>
+
+            <p class="descripcion">
+                La propiedad <strong>display</strong> determina
+                cómo se comporta un elemento dentro de la página.
+            </p>
+
+
+            <h3>Elementos Block</h3>
+
+            <p>
+                Los elementos block ocupan todo el ancho disponible
+                y comienzan en una nueva línea.
+            </p>
+
+            <div class="block">
+                Soy un elemento BLOCK
+            </div>
+
+            <div class="block">
+                Yo también soy BLOCK
+            </div>
+
+
+            <h3>Elementos Inline</h3>
+
+            <p>
+                Los elementos inline ocupan solamente el espacio
+                necesario y pueden aparecer en la misma línea.
+            </p>
+
+            <div class="ejemplo-inline">
+
+                Texto normal:
+
+                <span class="inline">INLINE 1</span>
+
+                <span class="inline">INLINE 2</span>
+
+                <span class="inline">INLINE 3</span>
+
+            </div>
+
+
+            <div class="codigo-ejemplo">
+
+                .block {
+                <br>
+                &nbsp;&nbsp;display: block;
+                <br>
+                }
+                <br><br>
+                .inline {
+                <br>
+                &nbsp;&nbsp;display: inline;
+                <br>
+                }
+
+            </div>
+            <br>
+            <h2>Float y Clear</h2>
+
+            <p class="descripcion">
+                La propiedad <strong>float</strong> permite que un
+                elemento se desplace hacia la izquierda o derecha,
+                mientras que el contenido puede colocarse a su alrededor.
+            </p>
+
+
+            <div class="contenedor-float">
+
+                <div class="caja-float">
+                    FLOAT
+                </div>
+
+                <p>
+                    Este texto se coloca alrededor de la caja porque
+                    la caja tiene aplicado <strong>float: left</strong>.
+                    Esto significa que el elemento se desplaza hacia
+                    la izquierda y el contenido que viene después
+                    puede ocupar el espacio disponible a su lado.
+                </p>
+
+                <p>
+                    Podemos escribir más contenido para que se vea
+                    claramente cómo el texto continúa alrededor del
+                    elemento flotante. Cuando el espacio lateral
+                    termina, el texto continúa debajo de la caja.
+                </p>
+
+                <div class="clear">
+                    <strong>CLEAR</strong>
+                    <br>
+                    Este elemento utiliza <strong>clear: both</strong>,
+                    por lo que ya no se coloca junto al elemento flotante.
+                </div>
+
+            </div>
+
+
+            <h3>Propiedades utilizadas</h3>
+
+            <div class="codigo-ejemplo">
+
+                .caja-float {
+                <br>
+                &nbsp;&nbsp;float: left;
+                <br>
+                }
+                <br><br>
+
+                .clear {
+                <br>
+                &nbsp;&nbsp;clear: both;
+                <br>
+                }
             </div>
         </section>
-        <br>
-        <HR>
-        <footer>
-            <nav>
-                <a href="nosotros.html">Nosotros</a>
-            </nav>
-        </footer>
-    </body>
+
+
+        
+        <!-- =================================================
+             3. RELATIVE Y ABSOLUTE
+             ================================================= -->
+
+        <section class="seccion">
+
+            <h2>3. Position: Relative y Absolute</h2>
+
+            <p class="descripcion">
+                La propiedad <strong>position</strong> permite
+                controlar la posición de un elemento.
+            </p>
+
+
+            <div class="contenedor-relative">
+
+                <strong>Contenedor: position: relative</strong>
+
+                <p>
+                    Este contenedor sirve como referencia
+                    para el elemento absolute.
+                </p>
+
+
+                <div class="elemento-relative">
+
+                    <strong>RELATIVE</strong>
+
+                    <br>
+
+                    top: 20px
+                    <br>
+                    left: 20px
+
+                </div>
+
+
+                <div class="elemento-absolute">
+
+                    <strong>ABSOLUTE</strong>
+
+                    <br>
+
+                    top: 20px
+                    <br>
+                    right: 20px
+
+                </div>
+
+            </div>
+
+
+            <h3>¿Qué diferencia hay?</h3>
+
+            <div class="comparacion">
+
+                <div class="tarjeta">
+
+                    <h3>Relative</h3>
+
+                    <p>
+                        Se mueve desde su posición original,
+                        pero conserva el espacio que ocupaba.
+                    </p>
+
+                </div>
+
+
+                <div class="tarjeta">
+
+                    <h3>Absolute</h3>
+
+                    <p>
+                        Sale del flujo normal y se posiciona
+                        respecto a un contenedor de referencia.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             4. FIXED
+             ================================================= -->
+
+        <section class="seccion">
+
+            <h2>4. Position: Fixed</h2>
+
+            <p class="descripcion">
+
+                Un elemento con <strong>position: fixed</strong>
+                queda fijado respecto a la ventana del navegador.
+
+            </p>
+
+            <p>
+                Para comprobarlo, desplázate hacia abajo.
+                El botón verde de la esquina permanecerá en
+                la misma posición.
+            </p>
+
+            <div class="codigo-ejemplo">
+
+                .elemento-fixed {
+                <br>
+                &nbsp;&nbsp;position: fixed;
+                <br>
+                &nbsp;&nbsp;bottom: 20px;
+                <br>
+                &nbsp;&nbsp;right: 20px;
+                <br>
+                }
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             5. COMPARACIÓN FINAL
+             ================================================= -->
+
+        <section class="seccion">
+
+            <h2>5. Comparación de Position</h2>
+
+            <div class="comparacion">
+
+                <div class="tarjeta">
+
+                    <h3>Relative</h3>
+
+                    <p>
+                        Se mueve desde su posición original.
+                    </p>
+
+                    <strong>position: relative;</strong>
+
+                </div>
+
+
+                <div class="tarjeta">
+
+                    <h3>Absolute</h3>
+
+                    <p>
+                        Se posiciona respecto a un contenedor
+                        de referencia.
+                    </p>
+
+                    <strong>position: absolute;</strong>
+
+                </div>
+
+
+                <div class="tarjeta">
+
+                    <h3>Fixed</h3>
+
+                    <p>
+                        Permanece fijo respecto a la ventana
+                        del navegador.
+                    </p>
+
+                    <strong>position: fixed;</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Elemento que demuestra position: fixed -->
+
+    <div class="elemento-fixed">
+        FIXED
+    </div>
+
+
+    <footer>
+
+        <p>
+            Demostración de propiedades fundamentales de CSS
+        </p>
+
+    </footer>
+
+</body>
 </html>
+
+
